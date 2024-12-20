@@ -1,0 +1,19 @@
+<div class=register-form>
+  <h3>Ajouter une nouvelle catégorie</h3>
+<div>
+  <form [formGroup]="categoriedocForm" (ngSubmit)="addCategorie()">
+    <div class="form-group">
+      <label for="libcatdoc">Catégorie document</label>
+      <input formControlName="libcatdoc" type="text" class="form-control" />
+    </div>    
+        <button type="submit" class="btn btn-primary" > Enregistrer</button>    
+        <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-warning float-right"
+      >
+        Reset
+      </button>  
+  </form>
+</div>
+</div>

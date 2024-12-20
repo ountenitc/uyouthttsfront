@@ -1,0 +1,195 @@
+<!-- <div class="container-fluid">
+  <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <a class="d-flex align-items-center justify-content-between pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <span class="fs-5 d-none d-sm-inline">Rigo</span>
+                  
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                @for (item of [                
+
+                { title: 'Alphabet', routerLink: 'Alphabet', icon:'bi bi-alphabet' },
+                { title: 'Langue', routerLink: 'Langue',icon:'bi bi-globe' },
+                { title: 'Alerte', routerLink: 'Alerte',icon:'bi bi-exclamation-triangle' },
+                { title: 'Catégorie document', routerLink: 'Categoriedoc', icon:'bi bi-file-earmark-font' },
+                { title: 'Document', routerLink: 'Doctext',icon:'bi bi-file-earmark' },                
+                { title: 'Correspondance Fr-Mr', routerLink: 'Expressionmr',icon:'bi bi-translate' },
+                { title: 'Full text', routerLink: 'Fulltext',icon:'bi bi-card-text' },
+                { title: 'Opinion', routerLink: 'Opinion' ,icon:'bi bi-chat-right-text' },
+                { title: 'Reponse aux opinions', routerLink: 'ReponseOpinion', icon:'bi bi-chat-right-quote' },
+                { title: 'Utilisateur', routerLink: 'Utilisateur', icon:'bi bi-person' },
+               
+                ]; track item.title) {
+      
+                  <li class="nav-item">
+                    <a [routerLink]="['./'+item.routerLink]" class="nav-link align-middle px-0">
+                        <i [class]="item.icon"></i>
+                        <span class="ms-1 d-none d-sm-inline fs-5">{{ item.title }}</span>
+                    </a>
+                </li> }
+                
+                
+              </ul>
+              
+              <button class="btn btn-danger mb-2" (click)="logout()">Se deconnecter</button>
+          </div>
+      </div>
+      <div class="col py-3">
+        <router-outlet></router-outlet>
+      </div>
+  </div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body id="body">
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="./Home" class="logo d-flex align-items-center">
+        <img src="assets/rigo.jpg" alt="">
+        <span class="d-none d-lg-block">Rigo</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <!-- <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div> End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">  
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <!--<img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">--> 
+            <i class="bi bi-person"></i>
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+              Utilisateur
+            </span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{nomUser}}</h6>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+       <!--  
+            avec utilisateur connecte
+          <a class="btn dropdown-item d-flex align-items-center" (click)="logout()" *ngIf="nomUser">
+        -->
+            <li>
+              <a class="btn dropdown-item d-flex align-items-center" (click)="logout()">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Se déconnecter</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header>
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      @for (item of [                
+              { title: 'Dashboard', routerLink: 'Home', icon:'bi bi-grid' },
+              { title: 'Alphabet', routerLink: 'Alphabet', icon:'bi bi-alphabet' },
+              { title: 'Langue', routerLink: 'Langue',icon:'bi bi-globe' },
+              { title: 'Alerte', routerLink: 'Alerte',icon:'bi bi-exclamation-triangle' },
+              { title: 'Catégorie document', routerLink: 'Categoriedoc', icon:'bi bi-file-earmark-font' },
+              { title: 'Document', routerLink: 'Doctext',icon:'bi bi-file-earmark' },                
+              { title: 'Correspondance Fr-Mr', routerLink: 'Expressionmr',icon:'bi bi-translate' },
+              { title: 'Full text', routerLink: 'Fulltext',icon:'bi bi-card-text' },
+              { title: 'Opinion', routerLink: 'Opinion' ,icon:'bi bi-chat-right-text' },
+              { title: 'Reponse aux opinions', routerLink: 'ReponseOpinion', icon:'bi bi-chat-right-quote' },
+              { title: 'Utilisateur', routerLink: 'Utilisateur', icon:'bi bi-person' },
+              
+              ]; track item.title) { 
+              <li class="nav-item">
+                <a class="nav-link collapsed" [routerLink]="['./'+item.routerLink]">
+                  <i [class]="item.icon"></i>
+                  <span>{{ item.title }}</span>
+                </a>
+              </li>              
+            }
+
+           <!--  <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Home']">
+                <i class="bi bi-grid"></i>
+                <span>dashboard</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Alphabet']">
+                <i class="bi bi-alphabet"></i>
+                <span>Alphabet</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Langue']">
+                <i class="bi bi-globe"></i>
+                <span>Langue</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Alerte']">
+                <i class="bi bi-exclamation-triangle"></i>
+                <span>Alerte</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Categoriedoc']">
+                <i class="icon:'bi bi-file-earmark-font"></i>
+                <span>Catégorie</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Doctext']">
+                <i class="icon:bi bi-file-earmark"></i>
+                <span>Document</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Expressionmr']">
+                <i class="bi bi-translate"></i>
+                <span>Correspondance Fr-Mr</span>
+              </a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" [routerLink]="['./Expressionmr']">
+                <i class="bi bi-translate"></i>
+                <span>Correspondance Fr-Mr</span>
+              </a>
+            </li>  -->
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <router-outlet></router-outlet>
+  </main><!-- End #main -->
+
+  <!-- <script src="assets/js/main.js"></script> -->
+</body>
+</html>

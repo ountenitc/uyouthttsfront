@@ -1,0 +1,52 @@
+<div class="card-body">
+  <div class="card-title">
+    <div class="content">
+      <div class="contentleft">
+        <button button="submit" class="btn btn-info" routerLink="../AddFulltext"  >        
+          Ajouter
+        </button>
+    </div>
+    <div class="contentright">
+      <div class="input-group d-flex">
+        <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="filtrer()" type="submit">Search</button>
+      </div>
+    </div>
+    </div>
+  </div>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">storie texte FR</th>
+        <th scope="col">storie texte Mr</th>
+        <th scope="col">Document</th>
+        <th scope="col">Titre de l'audio Mr</th>
+        <th colSpan={2}>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr class="text-center" *ngFor ="let fulltext  of fulltexts | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+      <td>{{ fulltext.idstoriefrmr }}</td>
+      <td>{{ fulltext.sttextefr }}</td>
+      <td>{{ fulltext.sttextemr }}</td>
+      <td>{{ fulltext.iddoctext?.titrefrdoc }}</td>
+      <td>
+        {{fulltext.staudiomr }}
+        <audio controls>
+          <source src="{{fulltextService.traduireUrl+'/util/lireaudio/'+fulltext.staudiomr }}" controls="" type="audio/mp3">
+      </audio>
+      </td>
+      <td class="d-flex justify-content-around">
+      <button class="btn btn-warning me-5" [routerLink]="['../UpdateFulltext',fulltext.idstoriefrmr]"> <i class="bi bi-pencil-square"></i></button>
+      <button class="btn btn-danger" (click)="delete(fulltext)"> <i class="bi bi-trash"></i></button>
+      </td>
+   </tr>
+    
+      
+    </tbody>
+  </table>
+  <div *ngIf="fulltexts.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+    <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

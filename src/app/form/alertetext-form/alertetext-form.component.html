@@ -1,0 +1,42 @@
+<div class=register-form>
+    <h3>Ajouter une nouvelle expression en langue</h3>    
+    <div>
+        <form [formGroup]="expressionmrForm" (ngSubmit)="create()">
+            <!-- <div class="form-group">
+                <select formControlName="idmefr" [(ngModel)]="expressionfr" >
+                    <option [ngValue]="null" disabled>Choisir l'expression française</option>
+                    <option *ngFor="let expressionfr  of expressionfrs" [ngValue]="expressionfr">{{ expressionfr.formeecrite }}
+                    </option>
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label for="idmefr">Expression française</label>
+                <input formControlName="expressionfr" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="formprononcefr">Phonetique française</label>
+                <input formControlName="formprononcefr" type="text" class="form-control" />
+            </div>
+            <label for="idlangue">Langue de traduction</label>
+            <div class="form-group">
+                <select formControlName="idlangue" [(ngModel)]="langue" [compareWith]="compareLang" >
+                    <option [ngValue]="null" disabled>Choisir la langue de traduction</option>
+                    <option *ngFor="let langue  of langues" [ngValue]="langue">{{ langue.liblangue }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="formecritmr">Expression en langue</label>
+                <input formControlName="formecritmr" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="formprononcemr">Phonetique en langue</label>
+                <input formControlName="formprononcemr" type="text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary"> Enregistrer</button>
+            <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+                Annuler
+            </button>
+        </form>
+    </div>
+</div>

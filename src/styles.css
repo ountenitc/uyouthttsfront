@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+
+.App {
+    text-align: left;
+    max-width: 90%;
+    margin: auto;
+    min-height: 100%;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  .div{
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+  .table{
+    max-width: 80%;
+    margin-top: 2%;
+    margin-left: 10%;
+  }
+  
+  .content{
+    margin: auto;
+    display: flex;
+  }
+  .contentleft{
+    margin: auto;
+    display: flex;
+    justify-content: left;
+  }
+  .contentright{
+    margin: auto;
+    display: flex;
+    justify-content: right;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .register-form {
+    max-width: 50%;
+    margin: auto;
+  }
+  
+.content {
+  margin-left: 2%;
+
+}
+
+.table-rigo {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-rigo-cell {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.content.table {
+  width: 60%;
+}
+

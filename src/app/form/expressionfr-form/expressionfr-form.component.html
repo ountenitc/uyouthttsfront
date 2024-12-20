@@ -1,0 +1,27 @@
+<div class=register-form>
+    <h3>Ajouter une nouvelle expression française</h3>    
+    <div>
+        <form [formGroup]="epressionfrForm" (ngSubmit)="addExpressionfr()">           
+            <label for="idalph">Alphabet</label>
+            <div class="form-group">
+                <select formControlName="idalph" [(ngModel)]="alphabetfr" >
+                    <option [ngValue]="null" disabled>Choisir l'alphabet</option>
+                    <option *ngFor="let alphabetfr  of alphabetfrs" [ngValue]="alphabetfr">{{ alphabetfr.lettre }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="formeecrite">Expression</label>
+                <input formControlName="formeecrite" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="formprononce">Phonetique</label>
+                <input formControlName="formprononce" type="text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary"> Enregistrer</button>
+            <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+                Annuler
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="card-body">
+    <div class="card-title">
+      <div class="content">
+        <div class="contentleft">
+          <button button="submit" class="btn btn-info" routerLink="../AddUtilisateur"  >        
+            Ajouter
+          </button>
+      </div>
+      <div class="contentright">
+        <div class="input-group d-flex">
+          <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" (click)="filtrer()" type="submit">Search</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th scope="col">#</th>
+          <th scope="col">Nom Utilisateur</th>
+          <th scope="col">Role Utilisateur</th>
+          <th colSpan={2}>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr class="text-center" *ngFor ="let item  of users | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <td>{{ item.iduser }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.role }}</td>
+        <td class="d-flex justify-content-around">
+        <button class="btn btn-warning me-5" [routerLink]="['../UpdateUtilisateur', item.iduser]"> <i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-danger" (click)="delete(item)"> <i class="bi bi-trash"></i></button>
+        </td>
+     </tr>
+      
+        
+      </tbody>
+    </table>
+    <div *ngIf="users.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+  

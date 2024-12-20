@@ -1,0 +1,31 @@
+<div class="container">
+    <select class="form-select" aria-label="Default select example">
+        <option [ngValue]="null" (click)="reinitialiser()" selected>Selectionner une opinion</option>
+        <option *ngFor="let op of listeOpinion" (click)="getReponseOpinion(op.idopinionfrmr)" [value]="op">{{op.optextefr}}</option>*
+      </select>
+    <div class="tab">
+        <table  class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Reponse en français</th>
+                <th scope="col">Reponse en Mooré</th>
+                <th scope="col">Audio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center" *ngFor="let reponse of listeOpinonReponse">
+                <th scope="row"> {{reponse.idropfrmr}} </th>
+                <td>{{reponse.reponseopfr}}</td>
+                <td>{{reponse.reponseopmr}}</td>
+                <td>
+                  {{reponse.audioreponsemr}}
+                  <audio controls>
+                    <source src="{{opinionService.usersUrl+'/util/lireaudio/'+reponse.audioreponsemr }}" controls="" type="audio/mp3">
+                </audio>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+</div>

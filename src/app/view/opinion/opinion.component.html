@@ -1,0 +1,50 @@
+<div class="card-body">
+  <div class="card-title">
+    <div class="content">
+      <div class="contentleft">
+        <button button="submit" class="btn btn-info" routerLink="../AddOpinion"  >        
+          Ajouter
+        </button>
+    </div>
+    <div class="contentright">
+      <div class="input-group d-flex">
+        <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="filtrer()" type="submit">Search</button>
+      </div>
+    </div>
+    </div>
+  </div>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Français</th>
+        <th scope="col">Mooré</th>
+        <th scope="col">Audio</th>
+        <th scope="col">Document</th>
+        <th colSpan={3}>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor ="let opinion  of opinions">
+        <td>{{ opinion.idopinionfrmr  }}</td>
+        <td>{{ opinion.optextefr }}</td>
+        <td>{{ opinion.optextemr  }}</td>
+        <td>
+          {{opinion.opaudiomr }}
+          <audio controls>
+            <source src="{{opinionService.traduireUrl+'/util/lireaudio/'+opinion.opaudiomr }}" controls="" type="audio/mp3">
+        </audio>
+        </td>
+        <td>{{ opinion.iddoctext?.titrefrdoc  }}</td>
+        <td class="d-flex justify-content-around">
+        <button class="btn btn-warning" [routerLink]="['../UpdateOpinion',opinion.idopinionfrmr]"> <i class="bi bi-pencil-square"></i> </button>
+        <button class="btn btn-danger" (click)="delete(opinion)"><i class="bi bi-trash"></i> </button>
+        </td>
+     </tr>
+    </tbody>
+  </table>
+  <div *ngIf="opinions.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+    <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

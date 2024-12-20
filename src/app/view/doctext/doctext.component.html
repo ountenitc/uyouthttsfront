@@ -1,0 +1,47 @@
+<div class="card-body">
+    <div class="card-title">
+      <div class="content">
+        <div class="contentleft">
+          <button button="submit" class="btn btn-info" routerLink="../AddDoctext"  >        
+            Ajouter
+          </button>
+      </div>
+      <div class="contentright">
+        <div class="input-group d-flex">
+          <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" (click)="filtrer()" type="submit">Search</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th scope="col">#</th>
+          <th scope="col">Catégorie</th>    
+          <th scope="col">Date</th>          
+          <th scope="col">Titre en français</th>
+          <th scope="col">Titre en Mooré</th>
+          <th scope="col">Audio</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor ="let doctext  of doctexts | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+          <td>{{ doctext.iddoctext }}</td>
+          <td>{{ doctext.idcatdoc?.libcatdoc }}</td>
+          <td>{{ doctext.datedoc }}</td>
+          <td>{{ doctext.titrefrdoc }}</td>
+          <td>{{ doctext.titremrdoc }}</td>
+          <td>{{ doctext.audiotitremrdoc }}</td>
+          <td class="d-flex justify-content-around"> 
+          <button class="btn btn-warning" [routerLink]="['../UpdateDoctext', doctext.iddoctext]"> <i class="bi-pencil-square"></i></button>
+          <button class="btn btn-danger" (click)="delete(doctext)"> <i class="bi bi-trash"></i></button>
+          </td>
+       </tr>
+      </tbody>
+    </table>
+    <div *ngIf="doctexts.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>

@@ -1,0 +1,27 @@
+
+<div class="card-body">
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr  class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Expression</th>        
+        <th col={3}>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr class="text-center" *ngFor ="let alertetext  of alertetexts | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <td>{{ alertetext.idalerttxt }}</td>
+        <td>{{ alertetext.datetxt }}</td>
+        <td>{{ alertetext.motexp }}</td>
+        <td class="d-flex justify-content-around">
+        <button class="btn btn-warning" [routerLink]="['../UpdateAlerte',alertetext.idalerttxt]" routerLinkActive="router-link-active" ><i class="bi-pencil-square"></i></button>
+        <button class="btn btn-danger"><i class="bi-trash"></i></button>
+        </td>
+     </tr>
+      </tbody>
+  </table>
+  <div *ngIf="alertetexts.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+    <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

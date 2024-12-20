@@ -1,0 +1,40 @@
+<div class="register-form">
+    <h3>Ajouter une reponse à une Opinion</h3>
+    <div>
+        <form [formGroup]="formOpinionReponse" (ngSubmit)="addOpinion()">
+            <div class="form-group">
+                <select formControlName="idopinionfrmr" [(ngModel)]="idopinionfrmr" [compareWith]="compareDoc">
+                    <option [ngValue]="null" disabled>Choisir l'alphabet</option>
+                    <option *ngFor="let op of opinions" [ngValue]="op">{{op.optextefr}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reponseopfr">Texte en français</label>
+                <textarea formControlName="reponseopfr" type="text" class="form-control"></textarea>
+            </div>           
+                <div class="form-group">            
+                <button type="button" (click)="traduire()" class="btn btn-primary"> Traduire</button>               
+            </div>
+            <div class="form-group">
+                <label for="reponseopmr">Texte en langue</label>
+                <textarea formControlName="reponseopmr" [(ngModel)]="reponseopmr" type="text" class="form-control"></textarea>
+            </div>
+            <button type="button" (click)="lireAudio()" class="btn btn-primary"> Générer l'audio</button>
+            @if (audio) {
+                <div class="form-group">
+                    <figcaption>Le vocal </figcaption>
+                    <audio controls autoplay>
+                        <source src="{{opnionReponseService.usersUrl+'/'+texteAudio}}" controls="" type="audio/mpeg">
+                    </audio>
+                </div>
+            }
+            
+            
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary"> Enregistrer</button>
+                <button type="button" (click)="onReset()" class="btn btn-warning float-right"> Annuler </button>
+            </div>
+        </form>
+    </div>
+</div>

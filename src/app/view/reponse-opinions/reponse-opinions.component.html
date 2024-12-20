@@ -1,0 +1,51 @@
+<div class="card-body">
+    <div class="card-title">
+      <div class="content">
+        <div class="contentleft">
+          <button button="submit" class="btn btn-info" routerLink="../AddReponseOpinion"  >        
+            Ajouter
+          </button>
+      </div>
+      <button class="btn btn-primary" [routerLink]="['../questionnaires']">Questionnaires</button>
+      <div class="contentright">
+        <div class="input-group d-flex">
+          <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" (click)="filtrer()" type="submit">Search</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr class="text-center">
+          <th scope="col">#</th>
+          <th scope="col">Opinion</th>
+          <th scope="col">Reponse en Français</th>
+          <th scope="col">Reponse en Mooré</th>
+          <th scope="col">Audio</th>
+          <th colSpan={3}>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center" *ngFor ="let opinion  of opinionResponse">
+          <td>{{ opinion.idropfrmr  }}</td>
+          <td>{{ opinion.idopinionfrmr?.optextefr }}</td>
+          <td>{{ opinion.reponseopfr }}</td>
+          <td>{{ opinion.reponseopmr  }}</td>
+          <td>
+            {{opinion.audioreponsemr }}
+            <audio controls>
+              <source src="{{opinionResponseService.usersUrl+'/util/lireaudio/'+opinion.audioreponsemr }}" controls="" type="audio/mp3">
+          </audio>
+          </td>
+          <td class="d-flex justify-content-around">
+          <button class="btn btn-warning" [routerLink]="['../UpdateReponseOpinion',opinion.idropfrmr]"> <i class="bi bi-pencil-square"></i> </button>
+          <button class="btn btn-danger" (click)="delete(opinion)"><i class="bi bi-trash"></i> </button>
+          </td>
+       </tr>
+      </tbody>
+    </table>
+    <div *ngIf="opinionResponse.length>itemsPerPage" class="mt-8 py-5 flex justify-center items-center" style="width: 100%; display: flex; justify-content: center;" >
+      <pagination-controls  (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>

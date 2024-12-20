@@ -1,0 +1,31 @@
+<div class=register-form>
+    <h3>Ajouter une nouvelle langue</h3>
+    <div>
+        <form [formGroup]="langueForm" (ngSubmit)="addLangue()">
+            <div class="form-group">
+                <label for="liblangue">Langue</label>
+                <input formControlName="liblangue" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="appelationethnie">Appelation ethnique</label>
+                <input formControlName="appelationethnie" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="payslangue">Pays</label>
+                <input formControlName="payslangue" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="regionlangue">Région</label>
+                <input formControlName="regionlangue" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="nombrelocuteur">Nombre locuteur</label>
+                <input formControlName="nombrelocuteur" type="text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary"> Enregistrer</button>
+            <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+                Annuler
+            </button>
+        </form>
+    </div>
+</div>

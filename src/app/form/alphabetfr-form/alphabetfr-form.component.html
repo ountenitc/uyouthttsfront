@@ -1,0 +1,23 @@
+<div class=register-form>
+  <h3 >Ajouter une nouvelle lettre</h3>
+<div>
+  <form [formGroup]="alphabetForm" (ngSubmit)="addAlphabet()">
+    <div class="form-group">
+      <label for="lettre">Lettre</label>
+      <input formControlName="lettre" type="text" class="form-control" name="Lettre" />
+    </div>
+    <div class="form-group">
+      <label for="phonetalph">Phonetique</label>
+      <input formControlName="phonetalph" type="text" class="form-control" name="Phonetique" />
+    </div>
+        <button type="submit" class="btn btn-primary" > Enregistrer</button>    
+        <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-warning float-right"
+      >
+        Annuler
+      </button>  
+  </form>
+</div>
+</div>
